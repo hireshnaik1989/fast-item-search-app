@@ -2,9 +2,14 @@ import streamlit as st
 import pandas as pd
 import requests
 import base64
+from dotenv import load_dotenv
+import os
 
-# GitHub credentials
-GITHUB_TOKEN = "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"
+# Load environment variables
+load_dotenv()
+
+# Access token from .env
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 REPO_NAME = "hireshnaik1989/fast-item-search-app"
 BRANCH_NAME = "main"
 
