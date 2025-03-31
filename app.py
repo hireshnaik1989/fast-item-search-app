@@ -4,7 +4,7 @@ import requests
 import base64
 
 # GitHub credentials
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = "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"
 REPO_NAME = "hireshnaik1989/fast-item-search-app"
 BRANCH_NAME = "main"
 
