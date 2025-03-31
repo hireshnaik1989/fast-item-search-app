@@ -5,11 +5,15 @@ import base64
 from dotenv import load_dotenv
 import os
 
-# Load environment variables
+# Load environment variables from .env
 load_dotenv()
 
-# Access token from .env
+# Access GitHub Token
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+if not GITHUB_TOKEN:
+    st.error("GitHub Token not found. Please check your .env file.")
+    st.stop()
+
 REPO_NAME = "hireshnaik1989/fast-item-search-app"
 BRANCH_NAME = "main"
 
@@ -78,3 +82,6 @@ if uploaded_file is not None:
         st.success(f"File uploaded successfully: {response.json()['content']['html_url']}")
     else:
         st.error(f"Failed to upload file: {response.json()}")
+
+# Confirm token loading
+print("Token Loaded:", GITHUB_TOKEN)
