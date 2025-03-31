@@ -5,15 +5,15 @@ import base64
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from .env
-load_dotenv()
-
-# Access GitHub Token
+# Load environment variables from the .env file
+load_dotenv("C:/Users/HireshNaik/Desktop/OfflineSearchApp/.env")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+
 if not GITHUB_TOKEN:
-    st.error("GitHub Token not found. Please check your .env file.")
+    st.error("Failed to load GitHub token. Please check your .env file.")
     st.stop()
 
+# GitHub Configuration
 REPO_NAME = "hireshnaik1989/fast-item-search-app"
 BRANCH_NAME = "main"
 
@@ -58,7 +58,7 @@ if uploaded_file is not None:
     github_url = f"https://api.github.com/repos/{REPO_NAME}/contents/{file_name}"
 
     headers = {
-        "Authorization": f"Bearer {GITHUB_TOKEN}",
+        "Authorization": f"token {GITHUB_TOKEN}",
         "Accept": "application/vnd.github.v3+json"
     }
 
@@ -83,5 +83,3 @@ if uploaded_file is not None:
     else:
         st.error(f"Failed to upload file: {response.json()}")
 
-# Confirm token loading
-print("Token Loaded:", GITHUB_TOKEN)
